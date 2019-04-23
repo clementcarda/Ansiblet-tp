@@ -1,0 +1,7 @@
+---
+# handlers file for ftp
+
+- name: restart vsftpd
+  service:
+    name: "{{ vsftpd_service }}"
+    state: restarted

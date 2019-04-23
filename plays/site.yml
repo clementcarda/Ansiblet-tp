@@ -1,0 +1,18 @@
+---
+- hosts: all
+  remote_user: clement
+  become: true
+
+  tasks:
+    - name: Install python 3
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python3-minimal)
+
+- hosts: db
+  roles:
+    - mysql
+
+- hosts: app
+  roles:
+    - php
+    - wordpress
+    - ftp
